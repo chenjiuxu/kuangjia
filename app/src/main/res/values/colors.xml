@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="theme_color">#5bbffd</color>
+    <color name="transparent">#00000000</color>
+    <color name="transparent_gray">#CFDDDDDD</color>
+    <color name="transparent_black">#50000000</color>
+    <color name="transparent_black_2">#A0000000</color>
+    <color name="color_CCCCCC">#CCCCCC</color>
+    <color name="color_FFFFFF">#FFFFFF</color>
+    <color name="color_000000">#000000</color>
+    <color name="color_00CD00">#00CD00</color>
+    <color name="color_1CA2F7">#1CA2F7</color>
+    <color name="color_C3C3C3">#C3C3C3</color>
+    <color name="color_F2F9FF">#F2F9FF</color>
+    <color name="color_5E7D9A">#5E7D9A</color>
+    <color name="color_0005FF">#0005FF</color>
+</resources>
