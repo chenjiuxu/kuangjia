@@ -35,10 +35,10 @@ public class MyContentProvider extends ContentProvider {
         SelectionBuilder selectionBuilder = new SelectionBuilder();
         int TAG = um.match(uri);
         switch (TAG) {
-            case tag1:
+            case tag2:
                 String id = uri.getLastPathSegment();
                 selectionBuilder.where("id =?", id);
-            case tag2:
+            case tag1:
                 selectionBuilder.table("chentest").where(selection, selectionArgs);
                 Cursor cursor = selectionBuilder.query(datasql, projection, sortOrder);
                 Context ctx = getContext();
@@ -105,7 +105,7 @@ public class MyContentProvider extends ContentProvider {
 
         @Override
         public void onCreate(SQLiteDatabase db) {
-            String sql = "create table chentest( id  INTEGER PRIMARY KEY,name varchar(20) not null,password varchar(60) not null,age varchar(10) not null);";
+            String sql = "create table chentest( _id  INTEGER PRIMARY KEY,name varchar(20) not null,password varchar(60) not null,age varchar(10) not null);";
             db.execSQL(sql);
         }
 

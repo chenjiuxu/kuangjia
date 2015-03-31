@@ -27,6 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="用户名："
+                android:textColor="@android:color/background_dark"
                 android:textColorHint="@color/color_00CD00"
                 android:id="@+id/editText1" />
 
@@ -34,6 +35,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@android:color/background_dark"
                 android:hint="密码："
                 android:textColorHint="@color/color_00CD00"
                 android:id="@+id/editText2" />
@@ -42,6 +44,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@android:color/background_dark"
                 android:hint="年龄："
                 android:textColorHint="@color/color_00CD00"
                 android:id="@+id/editTex3" />
@@ -52,6 +55,11 @@
                 android:layout_height="wrap_content"
                 android:text="确认"
                 android:id="@+id/button" />
+
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/listView" />
         </LinearLayout>
 
         <LinearLayout
