@@ -67,6 +67,8 @@ import java.util.Map;
  * criteria, executed as a sub-query.
  *
  * This class is <em>not</em> thread safe.
+ * 数据库操作类
+ *
  */
 public class SelectionBuilder {
     private static final String TAG = "basicsyncadapter";

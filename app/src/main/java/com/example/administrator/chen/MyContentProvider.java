@@ -14,7 +14,7 @@ import android.net.Uri;
  * Created by Administrator on 2015/3/24.
  */
 public class MyContentProvider extends ContentProvider {
-    public static String CHEN_TEST = "com.example.administrator.chen.MyContentProvider";
+    public static String CHEN_TEST = "com.example.administrator.chen.MyContentProvider";//和注册文件中的一样
     private openDB opendb;//数据库帮助类
     private static UriMatcher um = new UriMatcher(UriMatcher.NO_MATCH);//uri筛选器
     private static final int tag1 = 1;
@@ -24,11 +24,19 @@ public class MyContentProvider extends ContentProvider {
         um.addURI(CHEN_TEST, "test", tag1);
         um.addURI(CHEN_TEST, "test/*", tag2);
     }
+
     @Override
     public boolean onCreate() {
         opendb = new openDB(getContext());
         return true;
     }
+
+    /**
+     * @param projection    列名
+     * @param selection     条件语句 id=?
+     * @param selectionArgs 条件说对应的列名
+     * @param sortOrder     排序
+     */
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
         SQLiteDatabase datasql = opendb.getReadableDatabase();
@@ -49,6 +57,7 @@ public class MyContentProvider extends ContentProvider {
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
         }
     }
+
     @Override
     public String getType(Uri uri) {
         String type;
@@ -64,6 +73,12 @@ public class MyContentProvider extends ContentProvider {
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
         }
     }
+
+    @Override
+    public int bulkInsert(Uri uri, ContentValues[] values) {//批量插入
+        return super.bulkInsert(uri, values);
+    }
+
     @Override
     public Uri insert(Uri uri, ContentValues values) {
         final SQLiteDatabase db = opendb.getWritableDatabase();
@@ -86,12 +101,24 @@ public class MyContentProvider extends ContentProvider {
         return result;
 
     }
+
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
-
-
-        return 0;
+        SQLiteDatabase db = opendb.getReadableDatabase();
+        int match = um.match(uri);
+        int a = -1;
+        switch (match) {
+            case tag1:
+                ;
+            case tag2:
+               a = db.delete("chentest", selection, selectionArgs);
+                ;
         }
+        Context ctx = getContext();
+        ctx.getContentResolver().notifyChange(uri, null, false);
+        return a;
+    }
+
     @Override
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
         return 0;
