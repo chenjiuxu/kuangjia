@@ -1,4 +1,4 @@
-package com.example.administrator.chen;
+package com.example.administrator.chen.Activity;
 
 
 import android.accounts.AccountManager;
@@ -8,6 +8,10 @@ import android.accounts.AccountManagerFuture;
 import android.accounts.AuthenticatorException;
 import android.accounts.OperationCanceledException;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -16,16 +20,28 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.example.administrator.chen.R;
+import com.example.administrator.chen.Fragment.Two;
+import com.example.administrator.chen.Account.constant;
+import com.example.administrator.chen.Fragment.one;
+
 import java.io.IOException;
 
+import cn.jpush.android.api.JPushInterface;
 
+/**
+ * 主界面
+ */
 public class MainActivity extends ActionBarActivity implements RadioGroup.OnCheckedChangeListener {
     private Toolbar toolbar;
 
@@ -33,7 +49,15 @@ public class MainActivity extends ActionBarActivity implements RadioGroup.OnChec
     private RadioGroup rg;
     private RelativeLayout al;
     private FragmentManager manager;
-
+    private one onw = new one();
+    private Two two = new Two();
+    private ListView main_list_view;
+    private MessageReceiver mMessageReceiver;
+    public static final String MESSAGE_RECEIVED_ACTION = "com.example.jpushdemo.MESSAGE_RECEIVED_ACTION";
+    public static final String KEY_TITLE = "title";
+    public static final String KEY_MESSAGE = "message";
+    public static final String KEY_EXTRAS = "extras";
+    public static boolean isForeground = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +67,28 @@ public class MainActivity extends ActionBarActivity implements RadioGroup.OnChec
         syncDrawerAnToolbar();
         initial();
         getToken();
+        System.out.println("===============" + getPackageName());
 
+    }
+
+    @Override
+    protected void onResume() {
+        JPushInterface.onResume(this);
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        JPushInterface.onPause(this);
+        super.onPause();
+    }
+
+    public void registerMessageReceiver() {
+        mMessageReceiver = new MessageReceiver();
+        IntentFilter filter = new IntentFilter();
+        filter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);
+        filter.addAction(MESSAGE_RECEIVED_ACTION);
+        registerReceiver(mMessageReceiver, filter);
     }
 
     /**
@@ -52,9 +97,22 @@ public class MainActivity extends ActionBarActivity implements RadioGroup.OnChec
     private void initial() {
         rg = (RadioGroup) findViewById(R.id.main_RadioGroup);
         al = (RelativeLayout) findViewById(R.id.main_RelativeLayout);
+        main_list_view = (ListView) findViewById(R.id.main_list_view);
         rg.setOnCheckedChangeListener(this);
-        rg.check(R.id.main_rb1);
+        getSupportFragmentManager().beginTransaction().add(R.id.main_RelativeLayout,
+                onw).commit();
+        initialLstview();
 
+    }
+
+    /**
+     * 初始化侧滑
+     */
+    private void initialLstview() {
+        View view = LayoutInflater.from(this).inflate(R.layout.main_head, null);
+        main_list_view.addHeaderView(view);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.mian_item, R.id.mian_item_tv, new String[]{"收藏", "关注", "呵呵"});
+        main_list_view.setAdapter(adapter);
     }
 
     /**
@@ -124,14 +182,15 @@ public class MainActivity extends ActionBarActivity implements RadioGroup.OnChec
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {//RadioGroup监听器
-        manager=getSupportFragmentManager();
+        manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         switch (checkedId) {
             case R.id.main_rb1:
-               transaction.add(R.id.main_RelativeLayout, new one(),null).commit();
-
+                transaction.replace(R.id.main_RelativeLayout, onw).commit();
+                return;
             case R.id.main_rb2:
-                ;
+                transaction.replace(R.id.main_RelativeLayout, two).commit();
+                return;
             case R.id.main_rb3:
                 ;
 
@@ -155,6 +214,24 @@ public class MainActivity extends ActionBarActivity implements RadioGroup.OnChec
                 e.printStackTrace();
             }
             //如果有token 跳转下一个页面
+        }
+    }
+
+
+    public class MessageReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (MESSAGE_RECEIVED_ACTION.equals(intent.getAction())) {
+                String messge = intent.getStringExtra(KEY_MESSAGE);
+                String extras = intent.getStringExtra(KEY_EXTRAS);
+                StringBuilder showMsg = new StringBuilder();
+                showMsg.append(KEY_MESSAGE + " : " + messge + "\n");
+                if (!extras.isEmpty()) {
+                    showMsg.append(KEY_EXTRAS + " : " + extras + "\n");
+                }
+//                setCostomMsg(showMsg.toString());
+            }
         }
     }
 

@@ -1,4 +1,4 @@
-package com.example.administrator.chen;
+package com.example.administrator.chen.Sqlite;
 
 import android.content.ContentValues;
 import android.database.Cursor;

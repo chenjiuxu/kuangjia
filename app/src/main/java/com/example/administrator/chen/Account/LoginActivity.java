@@ -1,4 +1,4 @@
-package com.example.administrator.chen;
+package com.example.administrator.chen.Account;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
@@ -10,12 +10,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.squareup.okhttp.OkHttpClient;
+import com.example.administrator.chen.R;
 
-/**
+/**登陆界面给系统调用
  * Created by Administrator on 2015/3/31.
  */
 public class LoginActivity extends ActionBarActivity implements View.OnClickListener {

@@ -77,36 +77,11 @@
             android:background="@android:color/darker_gray"
             android:layout_gravity="start">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:text="侧滑"
-                android:background="@android:color/white" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:text="侧滑"
-                android:background="@android:color/white" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:text="侧滑"
-                android:background="@android:color/white" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:text="侧滑"
-                android:background="@android:color/white" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:text="侧滑"
-                android:textColor="@color/color_00CD00"
-                android:background="@android:color/white" />
+          <ListView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/main_list_view"
+              ></ListView>
         </LinearLayout>
     </android.support.v4.widget.DrawerLayout>
 

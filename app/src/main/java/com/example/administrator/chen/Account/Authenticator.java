@@ -1,4 +1,4 @@
-package com.example.administrator.chen;
+package com.example.administrator.chen.Account;
 
 import android.accounts.AbstractAccountAuthenticator;
 import android.accounts.Account;
@@ -9,7 +9,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 
 /**
  * Created by Administrator on 2015/3/31.

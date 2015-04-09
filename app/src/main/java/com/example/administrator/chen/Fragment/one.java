@@ -1,4 +1,4 @@
-package com.example.administrator.chen;
+package com.example.administrator.chen.Fragment;
 
 import android.app.Activity;
 import android.content.ContentResolver;
@@ -20,6 +20,8 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.administrator.chen.R;
 
 
 public class one extends Fragment implements View.OnClickListener ,AdapterView.OnItemLongClickListener {

@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.administrator.chen.one">
+    tools:context="com.example.administrator.chen.Fragment.one">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,7 +54,7 @@
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/test"
+            android:background="@drawable/abc_ab_share_pack_holo_light"
             android:padding="5dp"
             android:id="@+id/one_listview">
 
