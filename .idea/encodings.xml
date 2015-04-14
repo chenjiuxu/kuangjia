@@ -4,5 +4,6 @@
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/administrator/chen/Account/constant.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/administrator/chen/Application/ChenApplication.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/administrator/chen/Fragment/Two.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/administrator/chen/PushMessage/pushSet.java" charset="GBK" />
   </component>
 </project>

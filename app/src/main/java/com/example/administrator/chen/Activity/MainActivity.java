@@ -15,6 +15,7 @@ import android.content.IntentFilter;
 import android.net.Uri;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -109,7 +110,9 @@ public class MainActivity extends ActionBarActivity implements RadioGroup.OnChec
      * 初始化侧滑
      */
     private void initialLstview() {
-        View view = LayoutInflater.from(this).inflate(R.layout.main_head, null);
+
+        View view = LayoutInflater.from(this).inflate(R.layout.testview, null);
+
         main_list_view.addHeaderView(view);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.mian_item, R.id.mian_item_tv, new String[]{"收藏", "关注", "呵呵"});
         main_list_view.setAdapter(adapter);
