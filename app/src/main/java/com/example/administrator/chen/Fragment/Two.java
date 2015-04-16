@@ -1,9 +1,9 @@
 package com.example.administrator.chen.Fragment;
 
-import android.animation.ObjectAnimator;
-import android.content.Context;
+
 import android.os.Bundle;
 
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
@@ -12,16 +12,15 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.administrator.chen.R;
+import com.nhaarman.listviewanimations.appearance.SingleAnimationAdapter;
+import com.nineoldandroids.animation.ObjectAnimator;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 
 
 public class Two extends Fragment {
@@ -56,8 +55,9 @@ public class Two extends Fragment {
         for (int i = 0; i <= 100; i++) {
             list.add("陈玖旭");
         }
-        listview.setAdapter(new MyAdapter(list));
-
+        AnimationAdapter animationAdapter = new AnimationAdapter(new MyAdapter(list));
+        animationAdapter.setAbsListView(listview);
+        listview.setAdapter(animationAdapter);
     }
 
     private static class MyAdapter extends BaseAdapter {
@@ -85,15 +85,29 @@ public class Two extends Fragment {
 
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
-            if (view == null) {
+            if(i<=20){
                 view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_textview, null);
-            } else {
+            }
                 TextView tv = (TextView) view.findViewById(R.id.item_editText);
                 tv.setText(list.get(i));
-            }
 
 
             return view;
+        }
+    }
+
+    private static class AnimationAdapter extends SingleAnimationAdapter {
+
+
+        protected AnimationAdapter(@NonNull BaseAdapter baseAdapter) {
+            super(baseAdapter);
+        }
+
+        @NonNull
+        @Override
+        protected com.nineoldandroids.animation.Animator getAnimator(@NonNull ViewGroup viewGroup, @NonNull View view) {
+            ObjectAnimator Animator = ObjectAnimator.ofFloat(view, "translationY", 500, 0);
+            return Animator;
         }
     }
 

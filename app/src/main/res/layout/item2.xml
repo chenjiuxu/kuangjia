@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="72dp"
+        android:id="@+id/rea"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_below="@+id/time_tow_axle_tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="04-15 12:47"
+            android:singleLine="true"
+            android:textSize="12sp"
+            android:gravity="center_vertical"
+            android:textColor="@android:color/white"
+            android:background="@color/color_1CA2F7" />
+
+        <ImageView
+            android:id="@+id/time_tow_axle_iv1"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_below="@+id/time_tow_axle_tv1"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/abc_btn_check_material" />
+
+        <TextView
+            android:id="@+id/time_tow_axle_tv1"
+            android:layout_width="2dp"
+            android:layout_height="48dp"
+            android:layout_marginRight="4dp"
+            android:layout_alignParentRight="true"
+            android:background="@color/color_0005FF" />
+
+        <TextView
+            android:layout_below="@+id/time_tow_axle_iv1"
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="4dp"
+            android:layout_alignParentRight="true"
+            android:background="@color/color_0005FF" />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_marginTop="48dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:orientation="vertical"
+        android:layout_toRightOf="@id/rea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:src="@drawable/c" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/c"
+            android:layout_marginTop="4dp" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

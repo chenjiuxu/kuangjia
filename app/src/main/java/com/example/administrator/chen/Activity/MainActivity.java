@@ -31,6 +31,7 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.example.administrator.chen.Fragment.three;
 import com.example.administrator.chen.R;
 import com.example.administrator.chen.Fragment.Two;
 import com.example.administrator.chen.Account.constant;
@@ -52,6 +53,7 @@ public class MainActivity extends ActionBarActivity implements RadioGroup.OnChec
     private FragmentManager manager;
     private one onw = new one();
     private Two two = new Two();
+    private three three = new three();
     private ListView main_list_view;
     private MessageReceiver mMessageReceiver;
     public static final String MESSAGE_RECEIVED_ACTION = "com.example.jpushdemo.MESSAGE_RECEIVED_ACTION";
@@ -84,13 +86,7 @@ public class MainActivity extends ActionBarActivity implements RadioGroup.OnChec
         super.onPause();
     }
 
-    public void registerMessageReceiver() {
-        mMessageReceiver = new MessageReceiver();
-        IntentFilter filter = new IntentFilter();
-        filter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);
-        filter.addAction(MESSAGE_RECEIVED_ACTION);
-        registerReceiver(mMessageReceiver, filter);
-    }
+
 
     /**
      * 初始化页面控件
@@ -195,6 +191,7 @@ public class MainActivity extends ActionBarActivity implements RadioGroup.OnChec
                 transaction.replace(R.id.main_RelativeLayout, two).commit();
                 return;
             case R.id.main_rb3:
+                transaction.replace(R.id.main_RelativeLayout, three).commit();
                 ;
 
 

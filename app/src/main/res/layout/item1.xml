@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/time_icon"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/shijian"
+            android:layout_marginLeft="67dp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="96dp"
+            android:id="@+id/rea"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:layout_below="@+id/time_axle_tv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textSize="12sp"
+                android:text="04-16-14:50"
+                android:gravity="center_vertical"
+                android:textColor="@android:color/white"
+                android:background="@color/color_1CA2F7" />
+
+            <ImageView
+                android:id="@+id/time_axle_iv1"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_below="@+id/time_axle_tv1"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/abc_btn_check_material" />
+
+            <TextView
+                android:layout_below="@+id/time_icon"
+                android:id="@+id/time_axle_tv1"
+                android:layout_width="2dp"
+                android:layout_height="72dp"
+                android:layout_marginRight="4dp"
+                android:layout_alignParentRight="true"
+                android:background="@color/color_0005FF" />
+
+            <TextView
+                android:layout_below="@+id/time_axle_iv1"
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="4dp"
+                android:layout_alignParentRight="true"
+                android:background="@color/color_0005FF" />
+        </RelativeLayout>
+
+        <LinearLayout
+
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            android:orientation="vertical"
+            android:layout_toRightOf="@id/rea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2015年"
+                android:background="@color/accent_material_dark"
+                android:id="@+id/test_tv"
+                android:textColor="@color/accent_material_light" />
+
+            <ImageView
+                android:layout_marginTop="62dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@drawable/c" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/a"
+                android:scaleType="centerCrop"
+                android:layout_marginTop="4dp" />
+
+            <ImageView
+                android:id="@+id/iv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/b"
+                android:scaleType="centerCrop"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
