@@ -47,7 +47,6 @@
                 android:src="@drawable/abc_btn_check_material" />
 
             <TextView
-                android:layout_below="@+id/time_icon"
                 android:id="@+id/time_axle_tv1"
                 android:layout_width="2dp"
                 android:layout_height="72dp"

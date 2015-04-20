@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,7 +15,8 @@ import android.widget.Toast;
 
 import com.example.administrator.chen.R;
 
-/**登陆界面给系统调用
+/**
+ * 登陆界面给系统调用
  * Created by Administrator on 2015/3/31.
  */
 public class LoginActivity extends ActionBarActivity implements View.OnClickListener {
@@ -24,7 +26,7 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
     private EditText et_name;
     private EditText et_password;
     private String loginname;
-    private String logintype;
+    private String TokenType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +43,7 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
         manager = AccountManager.get(this);
         Intent intent1 = getIntent();
         loginname = intent1.getStringExtra("loginname");
-        logintype = intent1.getStringExtra("logintype");
+        TokenType = intent1.getStringExtra("testToken");
     }
 
     /**
@@ -50,7 +52,7 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
     private void initialVIew() {
         et_name = (EditText) findViewById(R.id.login_et1);
         et_password = (EditText) findViewById(R.id.login_et2);
-        if(TextUtils.isEmpty(loginname)){
+        if (TextUtils.isEmpty(loginname)) {
             et_name.setText(loginname);
         }
         bt = findViewById(R.id.login_bt);
@@ -61,12 +63,11 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
     public void onClick(View v) {
         String name = et_name.getText().toString();
         String password = et_password.getText().toString();
-        if (name == null || password == null) {
+        if ("".equals(name)||"".equals(password)) {
             Toast.makeText(this, "密码内容不能为空！", Toast.LENGTH_SHORT).show();
-            return;
+        } else {
+            setToken(name, password);
         }
-        setToken(name, password);
-
     }
 
     /**
@@ -74,10 +75,10 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
      */
     private void setToken(String name, String password) {
 
-        Account account = new Account("陈玖旭", constant.ACCOUNT_TYPE);//用户name ACCOUNT类型
+        Account account = new Account(name, constant.ACCOUNT_TYPE);//用户name ACCOUNT类型
         if (TextUtils.isEmpty(loginname)) {
-            manager.addAccountExplicitly(account,null, null);//向系统添加账户
-            manager.setAuthToken(account, constant.TOKEN_TYPE, "这是测试的Token");
+            manager.addAccountExplicitly(account, null, null);//向系统添加账户
+            manager.setAuthToken(account, constant.TOKEN_TYPE, password);//向系统添加token
 
             //设置自动同步(目前关闭)
             // 通知系统,此账户支持同步
@@ -93,10 +94,10 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
         }
         /////////////可以没有不知道为什么
         Intent intent = new Intent();
-        intent.putExtra(AccountManager.KEY_ACCOUNT_NAME, "陈玖旭");
+        intent.putExtra(AccountManager.KEY_ACCOUNT_NAME, name);
         intent.putExtra(AccountManager.KEY_ACCOUNT_TYPE, constant.ACCOUNT_TYPE);
-        if (logintype != null && loginname.equals("testToken")) {
-            intent.putExtra(AccountManager.KEY_AUTHTOKEN, "这是测试的Token");
+        if (TokenType != null && constant.accountType.equals(loginname)) {//
+            intent.putExtra(AccountManager.KEY_AUTHTOKEN, password);
         }
         setResult(RESULT_OK, intent);
         finish();

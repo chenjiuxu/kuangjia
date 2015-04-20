@@ -31,6 +31,9 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.baidu.mapapi.SDKInitializer;
+import com.baidu.mapapi.map.MapView;
+import com.example.administrator.chen.Fragment.map;
 import com.example.administrator.chen.Fragment.three;
 import com.example.administrator.chen.R;
 import com.example.administrator.chen.Fragment.Two;
@@ -54,6 +57,7 @@ public class MainActivity extends ActionBarActivity implements RadioGroup.OnChec
     private one onw = new one();
     private Two two = new Two();
     private three three = new three();
+    private map map=new map();
     private ListView main_list_view;
     private MessageReceiver mMessageReceiver;
     public static final String MESSAGE_RECEIVED_ACTION = "com.example.jpushdemo.MESSAGE_RECEIVED_ACTION";
@@ -71,7 +75,7 @@ public class MainActivity extends ActionBarActivity implements RadioGroup.OnChec
         initial();
         getToken();
         System.out.println("===============" + getPackageName());
-
+        
     }
 
     @Override
@@ -85,7 +89,6 @@ public class MainActivity extends ActionBarActivity implements RadioGroup.OnChec
         JPushInterface.onPause(this);
         super.onPause();
     }
-
 
 
     /**
@@ -192,6 +195,9 @@ public class MainActivity extends ActionBarActivity implements RadioGroup.OnChec
                 return;
             case R.id.main_rb3:
                 transaction.replace(R.id.main_RelativeLayout, three).commit();
+                return;
+            case R.id.main_rb4:
+                transaction.replace(R.id.main_RelativeLayout, map).commit();
                 ;
 
 

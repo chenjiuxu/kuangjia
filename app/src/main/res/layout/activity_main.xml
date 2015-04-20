@@ -26,6 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_above="@+id/main_RadioGroup">
+
             </RelativeLayout>
 
             <RadioGroup
@@ -68,8 +69,20 @@
                     android:drawableTop="@android:drawable/checkbox_on_background"
                     android:textColor="@android:color/black"
                     android:gravity="center_horizontal" />
+
+                <RadioButton
+                    android:id="@+id/main_rb4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:button="@null"
+                    android:text="地图"
+                    android:drawableTop="@android:drawable/checkbox_on_background"
+                    android:textColor="@android:color/black"
+                    android:gravity="center_horizontal" />
             </RadioGroup>
         </RelativeLayout>
+
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="240dp"
@@ -77,11 +90,10 @@
             android:background="@android:color/darker_gray"
             android:layout_gravity="start">
 
-          <ListView
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:id="@+id/main_list_view"
-              ></ListView>
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/main_list_view"></ListView>
         </LinearLayout>
     </android.support.v4.widget.DrawerLayout>
 

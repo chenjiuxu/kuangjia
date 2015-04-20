@@ -22,39 +22,39 @@ import cn.jpush.android.data.JPushLocalNotification;
  */
 public class pushSet {
     /**
-     * Çå³ıÍ¨Öª
+     * æ¸…é™¤é€šçŸ¥
      *
      * @param context
-     * @param i       Í¨Öªid
+     * @param i       é€šçŸ¥id
      */
     public static void clearNotice(Context context, int i) {
         if (i == 0) {
-            JPushInterface.clearAllNotifications(context);//Çå³ıÈ«²¿
+            JPushInterface.clearAllNotifications(context);//æ¸…é™¤å…¨éƒ¨
         } else {
-            JPushInterface.clearNotificationById(context, i);//µ¥¸öÇå³ı
+            JPushInterface.clearNotificationById(context, i);//å•ä¸ªæ¸…é™¤
         }
     }
 
     /**
-     * ÉèÖÃÍ¨Öª½ÓÊÕÊ±¼ä
+     * è®¾ç½®é€šçŸ¥æ¥æ”¶æ—¶é—´
      *
      * @param context
-     * @param set     Éè¶¨ÔÚÔÚĞÇÆÚ¼¸½ÓÊÕ
-     * @param start   Ò»ÌìÖĞ¼¸µã¿ªÊ¼½ÓÊÕ
-     * @param finish  Ò»ÌìÖĞ¼¸µã½áÊø½ÓÊÕ
+     * @param set     è®¾å®šåœ¨åœ¨æ˜ŸæœŸå‡ æ¥æ”¶
+     * @param start   ä¸€å¤©ä¸­å‡ ç‚¹å¼€å§‹æ¥æ”¶
+     * @param finish  ä¸€å¤©ä¸­å‡ ç‚¹ç»“æŸæ¥æ”¶
      */
     public static void PushTime(Context context, Set<Integer> set, int start, int finish) {
         JPushInterface.setPushTime(context, set, start, finish);
     }
 
     /**
-     * ÉèÖÃ¾²Ä¬
+     * è®¾ç½®é™é»˜
      *
-     * @param context Ó¦ÓÃµÄApplicationContext
-     * @param i       ¾²ÒôÊ±¶ÎµÄ¿ªÊ¼Ê±¼ä - Ğ¡Ê± £¨24Ğ¡Ê±ÖÆ£¬·¶Î§£º0~23 £©
-     * @param i1      ¾²ÒôÊ±¶ÎµÄ¿ªÊ¼Ê±¼ä - ·ÖÖÓ£¨·¶Î§£º0~59 £©
-     * @param b       ¾²ÒôÊ±¶ÎµÄ½áÊøÊ±¼ä - Ğ¡Ê± £¨24Ğ¡Ê±ÖÆ£¬·¶Î§£º0~23 £©
-     * @param b1      ¾²ÒôÊ±¶ÎµÄ½áÊøÊ±¼ä - ·ÖÖÓ£¨·¶Î§£º0~59 £©
+     * @param context åº”ç”¨çš„ApplicationContext
+     * @param i       é™éŸ³æ—¶æ®µçš„å¼€å§‹æ—¶é—´ - å°æ—¶ ï¼ˆ24å°æ—¶åˆ¶ï¼ŒèŒƒå›´ï¼š0~23 ï¼‰
+     * @param i1      é™éŸ³æ—¶æ®µçš„å¼€å§‹æ—¶é—´ - åˆ†é’Ÿï¼ˆèŒƒå›´ï¼š0~59 ï¼‰
+     * @param b       é™éŸ³æ—¶æ®µçš„ç»“æŸæ—¶é—´ - å°æ—¶ ï¼ˆ24å°æ—¶åˆ¶ï¼ŒèŒƒå›´ï¼š0~23 ï¼‰
+     * @param b1      é™éŸ³æ—¶æ®µçš„ç»“æŸæ—¶é—´ - åˆ†é’Ÿï¼ˆèŒƒå›´ï¼š0~59 ï¼‰
      */
     public static void SilenceTime(Context context, int i, int i1, int b, int b1) {
         JPushInterface.setSilenceTime(context, i, i1, b, b1);
@@ -62,42 +62,42 @@ public class pushSet {
 
 
     /**
-     * ÉèÖÃÍ¨ÖªÀ¸ÑùÊ½
+     * è®¾ç½®é€šçŸ¥æ æ ·å¼
      *
      * @param context
-     * @param Layout  ²¼¾ÖÎÄ¼ş
-     * @param icon    ²¼¾ÖÎÄ¼şµÄÍ¼Æ¬
-     * @param title   ²¼¾ÖÎÄ¼şµÄtitle
-     * @param text    ²¼¾ÖÎÄ¼şµÄtext
+     * @param Layout  å¸ƒå±€æ–‡ä»¶
+     * @param icon    å¸ƒå±€æ–‡ä»¶çš„å›¾ç‰‡
+     * @param title   å¸ƒå±€æ–‡ä»¶çš„title
+     * @param text    å¸ƒå±€æ–‡ä»¶çš„text
      */
     public static void setDefaultPushNotificationBuilder(Context context, int Layout, int icon, int title, int text) {
         JPushInterface.setDefaultPushNotificationBuilder(new CustomPushNotificationBuilder(context, Layout, icon, title, text));
     }
 
     /**
-     * ÉèÖÃ±¾µØÍ¨Öª
+     * è®¾ç½®æœ¬åœ°é€šçŸ¥
      *
      * @param context
-     * @param test    ÀàÈİ
+     * @param test    ç±»å®¹
      * @param title   title
-     * @param id      ±¾µØÍ¨Öªid
-     * @param year    Äê
-     * @param month   ÔÂ
-     * @param day     ÈÕ
-     * @param hour    Ê±
-     * @param minute  ·Ö
-     * @param second  Ãë
-     * @param map     map json¼üÖµ¶Ô
+     * @param id      æœ¬åœ°é€šçŸ¥id
+     * @param year    å¹´
+     * @param month   æœˆ
+     * @param day     æ—¥
+     * @param hour    æ—¶
+     * @param minute  åˆ†
+     * @param second  ç§’
+     * @param map     map jsoné”®å€¼å¯¹
      */
     public static void LocalNotification(Context context, String test, String title, long id, int year, int month, int day, int hour, int minute, int second, Map map) {
         JPushLocalNotification ln = new JPushLocalNotification();
-        ln.setBuilderId(0);//ÑùÊ½
-        ln.setContent(test);//ÄÚÈİ
-        ln.setTitle(title);//±êÌâ
-        ln.setNotificationId(id);//Í¨Öªid
-        ln.setBroadcastTime(year, month, day, hour, minute, second);//´¥·¢Ê±¼ä
+        ln.setBuilderId(0);//æ ·å¼
+        ln.setContent(test);//å†…å®¹
+        ln.setTitle(title);//æ ‡é¢˜
+        ln.setNotificationId(id);//é€šçŸ¥id
+        ln.setBroadcastTime(year, month, day, hour, minute, second);//è§¦å‘æ—¶é—´
         if (map != null) {
-            JSONObject json = new JSONObject(map);//¸½´øjson
+            JSONObject json = new JSONObject(map);//é™„å¸¦json
             ln.setExtras(json.toString());
         }
         JPushInterface.addLocalNotification(context, ln);

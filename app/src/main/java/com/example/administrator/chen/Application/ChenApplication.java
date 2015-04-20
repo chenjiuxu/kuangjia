@@ -4,6 +4,9 @@ import android.app.Application;
 import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.baidu.mapapi.SDKInitializer;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
@@ -18,7 +21,9 @@ public class ChenApplication extends Application {
     private final int MSG = 1002;
     @Override
     public void onCreate() {
+
         super.onCreate();
+        SDKInitializer.initialize(getApplicationContext());
         JPushInterface.setDebugMode(true);//推送调试
         JPushInterface.init(this);//推送启动
         mHandler = new MyHandler();
@@ -39,7 +44,7 @@ public class ChenApplication extends Application {
                 HashMap map = (HashMap) msg.obj;
                 String Alias = (String) map.get("Alias");
                 Set<String> Tags = (Set<String>) map.get("Tags");
-                Toast.makeText(ChenApplication.this, "MyHandler", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ChenApplication.this, "这是什么", Toast.LENGTH_SHORT).show();
                 JPushInterface.setAliasAndTags(ChenApplication.this, Alias, Tags, new TagAliasCallback() {
                     @Override
                     public void gotResult(int i, String s, Set<String> set) {
