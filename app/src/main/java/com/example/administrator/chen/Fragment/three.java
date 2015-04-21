@@ -121,14 +121,14 @@ public class three extends Fragment implements LoaderManager.LoaderCallbacks<Cur
             if (i == 0 || a[i].equals(a[i - 1])) {
                 tv.setText("");
                 if (i == 0) {
-                    view.findViewById(R.id.time_icon).setVisibility(View.VISIBLE);
+                    view.findViewById(R.id.time_axle_time).setVisibility(View.VISIBLE);
                     tv.setText(s1 + "年");
                 } else {
-                    view.findViewById(R.id.time_icon).setVisibility(View.GONE);
+                    view.findViewById(R.id.time_axle_time).setVisibility(View.GONE);
                 }
 
             } else {
-                view.findViewById(R.id.time_icon).setVisibility(View.GONE);
+                view.findViewById(R.id.time_axle_time).setVisibility(View.GONE);
                 tv.setText(s1 + "年");
             }
             return view;

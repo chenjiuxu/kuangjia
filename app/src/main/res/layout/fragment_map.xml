@@ -40,7 +40,7 @@
             android:id="@+id/fragment_map_bt3"
             android:layout_width="wrap_content"
             android:layout_weight="1"
-            android:text="游乐场"
+            android:text="游乐园"
             android:textColor="@color/accent_material_dark"
             android:gravity="center"
             android:layout_height="match_parent" />

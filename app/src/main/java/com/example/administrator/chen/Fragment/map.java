@@ -62,7 +62,6 @@ public class map extends Fragment {
         View view = inflater.inflate(R.layout.fragment_map, container, false);
         initializeView(view);
         initializeLocation();
-
         baidumapListener();
         return view;
     }
@@ -172,7 +171,7 @@ public class map extends Fragment {
         mPoiSearch.searchNearby(new PoiNearbySearchOption()
                 .keyword(s)
                 .location(new LatLng(latitude, longitude))//收索原点
-                .radius(3000)//搜索半径
+                .radius(4000)//搜索半径
         );
 
 
@@ -219,7 +218,7 @@ public class map extends Fragment {
                 Toast.makeText(activity,Longitude+"/"+Latitude,Toast.LENGTH_SHORT).show();
                 if(Latitude==0&&Longitude==0){
                 }else {
-                    search(Latitude,Longitude,"游乐场");
+                    search(Latitude,Longitude,"游乐园");
                 }
             }
         });
@@ -236,13 +235,10 @@ public class map extends Fragment {
 
 
     }
-
     /**
      * 定位返回对象
      */
     private class myListener implements BDLocationListener {
-
-
         @Override
         public void onReceiveLocation(BDLocation bdLocation) {
 
@@ -260,7 +256,10 @@ public class map extends Fragment {
 
                 LatLng ll = new LatLng(bdLocation.getLatitude(),bdLocation.getLongitude());
                 MapStatusUpdate u = MapStatusUpdateFactory.newLatLng(ll);
-                baiduMap.animateMapStatus(u);
+            if(baiduMap!=null&&u!=null){
+                baiduMap.animateMapStatus(u);//快速切换包空
+            }
+
 
 
         }
